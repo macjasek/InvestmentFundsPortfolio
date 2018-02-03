@@ -1,7 +1,18 @@
 ﻿@page
 @model IndexModel
+@using HtmlAgilityPack;
 @{
     ViewData["Title"] = "Home page";
+
+}
+
+@{ 
+    var html = @"https://www.bankier.pl/fundusze/notowania/UNI34";
+    HtmlWeb web = new HtmlWeb();
+
+    var htmlDoc = web.Load(html);
+
+    var node = htmlDoc.DocumentNode.SelectSingleNode("//tr[1]/td[2]").InnerText.Trim();
 }
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
@@ -105,4 +116,8 @@
             <li><a href="https://go.microsoft.com/fwlink/?LinkID=398609">Publish to Microsoft Azure App Service</a></li>
         </ul>
     </div>
+</div>
+
+<div>
+   @node;
 </div>
