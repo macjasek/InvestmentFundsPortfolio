@@ -6,14 +6,6 @@
 
 }
 
-@{ 
-    var html = @"https://www.bankier.pl/fundusze/notowania/UNI34";
-    HtmlWeb web = new HtmlWeb();
-
-    var htmlDoc = web.Load(html);
-
-    var node = htmlDoc.DocumentNode.SelectSingleNode("//tr[1]/td[2]").InnerText.Trim();
-}
 
 <div id="myCarousel" class="carousel slide" data-ride="carousel" data-interval="6000">
     <ol class="carousel-indicators">
@@ -119,5 +111,6 @@
 </div>
 
 <div>
-   @node;
+    <h2>@Model.Name</h2>
+    <p>Price: @Model.Price PLN</p>
 </div>
