@@ -13,7 +13,7 @@ namespace InvestmentFundsPortfolio.Pages
         public void OnGet()
         {
 
-            var html = @"https://www.bankier.pl/fundusze/notowania/UNI34";
+            var html = @"https://www.bankier.pl/fundusze/notowania/SKR05";
             html = @"https://www.bankier.pl/fundusze/notowania/QRS17";
             HtmlWeb web = new HtmlWeb();
 

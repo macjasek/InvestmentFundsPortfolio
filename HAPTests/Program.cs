@@ -15,16 +15,6 @@ namespace HAPTests
 
             var node = htmlDoc.DocumentNode.SelectSingleNode("//tr[1]/td[2]");
 
-            //var nodes = htmlDoc.DocumentNode.SelectNodes("//td");
-
-            //foreach (var singleNode in nodes)
-            //{
-            //    if (singleNode.HasClass("textBold"))
-            //    {
-            //        Console.WriteLine(singleNode.InnerText.Trim());
-            //    }
-
-            //}
             Console.WriteLine(node.InnerText);
 
         }
