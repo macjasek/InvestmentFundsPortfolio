@@ -1,32 +1,29 @@
-﻿using HtmlAgilityPack;
+﻿using InvestmentFundsPortfolio.Data;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace InvestmentFundsPortfolio.Pages
 {
     public class IndexModel : PageModel
     {
-        [BindProperty]
-        public string Price { get; set; }
-        public string Name { get; set; }
+        private readonly InvestmentsDbContext _db;
 
-        public void OnGet()
+        public IndexModel(InvestmentsDbContext db)
         {
+            _db = db;
+        }
 
-            var html = @"https://www.bankier.pl/fundusze/notowania/SKR05";
-            html = @"https://www.bankier.pl/fundusze/notowania/QRS17";
-            HtmlWeb web = new HtmlWeb();
+        [BindProperty]
+        public IList<Fund> Funds { get; set; }
 
-            var htmlDoc = web.Load(html);
+        public async Task<IActionResult> OnGetAsync()
+        {
+            Funds = await _db.Funds.AsNoTracking().ToListAsync();
 
-            var node = htmlDoc.DocumentNode.SelectSingleNode("//tr[1]/td[2]");
-
-            Price = node.InnerText.Trim().Split('&')[0];
-
-            node = htmlDoc.DocumentNode.SelectSingleNode("//div/h1");
-
-            Name = node.InnerText;
-
+            return Page();
         }
     }
 }

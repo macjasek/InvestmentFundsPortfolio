@@ -55,12 +55,32 @@ namespace InvestmentFundsPortfolio.Data
             {
                 context.Funds.Add(f);
             }
+            context.SaveChanges();
 
             var portfolios = new Portfolio[]
             {
                 new Portfolio {InvestorID = 1, FundID = 1, StartingPrice = 310.18m, MaxPrice = 314.21m, StopLoss = 2.0m},
-                new Portfolio {InvestorID = 1, FundID = 2, StartingPrice = 113.47m, MaxPrice = 125.26m, StopLoss = 8.0m}
+                new Portfolio {InvestorID = 1, FundID = 2, StartingPrice = 113.47m, MaxPrice = 125.26m, StopLoss = 8.0m},
+                new Portfolio {InvestorID = 1, FundID = 3, StartingPrice = 131.25m, MaxPrice = 136.74m, StopLoss = 8.0m},
+                new Portfolio {InvestorID = 1, FundID = 4, StartingPrice = 18.34m, MaxPrice = 21.46m, StopLoss = 8.0m},
+                new Portfolio {InvestorID = 1, FundID = 5, StartingPrice = 107.38m, MaxPrice = 109.87m, StopLoss = 8.0m},
+                new Portfolio {InvestorID = 1, FundID = 6, StartingPrice = 67.23m, MaxPrice = 38.21m, StopLoss = 8.0m}
             };
+            foreach (Portfolio p in portfolios)
+            {
+                context.Portfolios.Add(p);
+            }
+            context.SaveChanges();
+
+            var investros = new Investor[]
+            {
+                new Investor {Nickname = "macjasek"}
+            };
+            foreach (Investor i in investros)
+            {
+                context.Investors.Add(i);
+            }
+            context.SaveChanges();
         }
     }
 }
