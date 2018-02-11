@@ -1,4 +1,5 @@
 ﻿using InvestmentFundsPortfolio.Data;
+using InvestmentFundsPortfolio.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
@@ -22,6 +23,10 @@ namespace InvestmentFundsPortfolio.Pages
         public async Task<IActionResult> OnGetAsync()
         {
             Funds = await _db.Funds.AsNoTracking().ToListAsync();
+            foreach (Fund f in Funds)
+            {
+                f.Price = Quotations.GetPrice(f.Url);
+            }
 
             return Page();
         }
