@@ -57,6 +57,16 @@ namespace InvestmentFundsPortfolio.Data
             }
             context.SaveChanges();
 
+            var investros = new Investor[]
+            {
+                new Investor {Nickname = "macjasek"}
+            };
+            foreach (Investor i in investros)
+            {
+                context.Investors.Add(i);
+            }
+            context.SaveChanges();
+
             var portfolios = new Portfolio[]
             {
                 new Portfolio {InvestorID = 1, FundID = 1, StartingPrice = 310.18m, MaxPrice = 314.21m, StopLoss = 2.0m},
@@ -72,15 +82,7 @@ namespace InvestmentFundsPortfolio.Data
             }
             context.SaveChanges();
 
-            var investros = new Investor[]
-            {
-                new Investor {Nickname = "macjasek"}
-            };
-            foreach (Investor i in investros)
-            {
-                context.Investors.Add(i);
-            }
-            context.SaveChanges();
+            
         }
     }
 }

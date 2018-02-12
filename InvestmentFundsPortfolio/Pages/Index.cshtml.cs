@@ -23,6 +23,13 @@ namespace InvestmentFundsPortfolio.Pages
         public async Task<IActionResult> OnGetAsync()
         {
             Funds = await _db.Funds.AsNoTracking().ToListAsync();
+
+            string query = "Select Fund.Name, Portfolio.StartingPrice " +
+                           "From Fund, Portfolio " +
+                           "Where Fund.FundID = Portfolio.FundID";
+
+            var portfolioFunds = await _db.Funds.FromSql(query).ToListAsync();
+
             foreach (Fund f in Funds)
             {
                 f.Price = Quotations.GetPrice(f.Url);

@@ -1,8 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace InvestmentFundsPortfolio.Data
 {
@@ -19,7 +15,7 @@ namespace InvestmentFundsPortfolio.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Fund>().ToTable("Fund");
-            modelBuilder.Entity<Investor>().ToTable("Investors");
+            modelBuilder.Entity<Investor>().ToTable("Investor");
             modelBuilder.Entity<Portfolio>().ToTable("Portfolio");
         }
     }
