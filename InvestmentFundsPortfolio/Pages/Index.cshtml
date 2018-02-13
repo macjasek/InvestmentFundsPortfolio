@@ -7,11 +7,12 @@
 }
 
 <div>
-    @foreach (Fund f in Model.Funds)
+    @foreach (var f in Model.PortfolioFunds)
     {
         <h2>@f.Name</h2>
         <p>Price: @f.Price</p>
-        <p></p>
+        <p>Starting Price: @f.StartingPrice</p>
+        <h3>Profit/Loss: @(f.Price - f.StartingPrice)</h3>
     }
 
 </div>
